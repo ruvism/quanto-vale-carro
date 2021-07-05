@@ -32,6 +32,7 @@ export const SelectModel = props => {
         <label>Qual é o modelo do seu carro?</label>
         <div className="option-div">
           <select onChange={handleSelection} value={selectedModel}>
+            <option value="">Modelo</option>
             {models.map((model, index) => (
               <option key={index} value={model} >
                 {model}  

@@ -31,6 +31,7 @@ export const SelectBrand = props => {
         <label>Qual é a marca do seu carro?</label>
         <div className="option-div">
           <select  onChange={handleSelection} value={selectedBrand}>
+              <option value="">Marca</option>
             {brands.map((brand, index) => (
               <option key={index} value={brand}>
                 {brand}  

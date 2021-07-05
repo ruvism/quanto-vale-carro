@@ -32,6 +32,7 @@ export const SelectVersion = props => {
         <label>Qual é a versão do seu carro?</label>
         <div className="option-div">
           <select onChange={handleSelection} value={selectedVersion}>
+              <option value="">Versão</option>
             {versions.map((version, index) => (
               <option key={index} value={version.versionId}>
                 {version.version}  

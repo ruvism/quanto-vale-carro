@@ -32,6 +32,7 @@ export const SelectYear = props => {
           <label>Qual é o ano do seu carro?</label>
           <div className="option-div">
             <select onChange={handleSelection} value={selectedYear}>
+              <option value="">Ano</option>
               {years.map((year, index) => (
                 <option key={index} value={year}>
                   {year}  
