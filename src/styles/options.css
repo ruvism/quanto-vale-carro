@@ -1,0 +1,54 @@
+.options-body{
+    display: flex;
+    flex-direction: column;    
+}
+.selected-options{
+    width: 100%;
+}
+.car-price{
+    width: 100%;
+    margin: 25px 0;
+    font-size: 20px;
+    font-weight: bold;
+}
+.car-price div{
+    display: flex;
+    justify-content: center;
+}
+
+@media (min-width: 1024px){
+    .options-body{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+    .selected-options{
+        width: 50%;
+    }
+    .car-price{
+        height: 100%;
+        width: 50%;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+    }
+}
+.option-div{
+    display:flex;
+    flex-direction: row;
+    justify-content: center;   
+}
+label{
+    display:flex;
+    justify-content: center; 
+    font-size: 16px;
+}
+select{
+    width: 80%;
+    height: 40px;
+    border: 1px solid #f1f1f1;
+    background-color:#f1f1f1;
+    border-radius: 5px;
+    margin: 15px;
+    padding: 5px;
+}
