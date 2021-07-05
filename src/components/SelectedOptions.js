@@ -1,12 +1,12 @@
 import React, { useState } from "react";
-import SelectBrand from "./options/SelectBrand";
-import SelectModel from "./options/SelectModel";
-import SelectYear from "./options/SelectYear";
-import SelectVersion from "./options/SelectVersion";
+import { SelectBrand } from "./options/SelectBrand";
+import { SelectModel } from "./options/SelectModel";
+import { SelectYear } from "./options/SelectYear";
+import { SelectVersion } from "./options/SelectVersion";
+import { CarPrice } from "./CarPrice";
 import '../styles/options.css';
 
-const SelectedOptions = (props) => {
-  const {brand, model, year, version } = props;
+export default function SelectedOptions () {
 
   const [selectedBrand, setSelectedBrand]  = useState("");
   const [selectedModel, setSelectedModel]  = useState("");
@@ -15,13 +15,11 @@ const SelectedOptions = (props) => {
 
   return (
     <div className="selected-options">
-      < SelectBrand brand={brand} setSelectedBrand={setSelectedBrand} />
-      < SelectModel selectedBrand={selectedBrand} model={model} setSelectedModel={setSelectedModel} />
-      < SelectYear selectedBrand={selectedBrand} selectedModel={selectedModel} year={year} setSelectedYear={setSelectedYear} />
-      < SelectVersion selectedBrand={selectedBrand} selectedModel={selectedModel} version={version} selectedYear={selectedYear} selectedVersion={selectedVersion} />
+      < SelectBrand selectedBrand={selectedBrand} setSelectedBrand={setSelectedBrand} />
+      < SelectModel {...{selectedBrand, selectedModel, setSelectedModel}} />
+      < SelectYear {...{selectedBrand, selectedModel, selectedYear, setSelectedYear}} />
+      < SelectVersion {...{selectedBrand, selectedModel, selectedYear, selectedVersion}} />
+      <CarPrice />
     </div>
   );
 };
-
-
-export default SelectedOptions;

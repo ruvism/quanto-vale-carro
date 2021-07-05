@@ -1,21 +1,18 @@
 import React, { useState, useEffect } from "react";
-// import { selectedBrand } from "../SelectedOptions";
 
-const SelectModel = () => {
+export const SelectModel = props => {
   const [error, setError] = useState(null);
   const [models, setModels] = useState([]);
-  const [selectedModel, setSelectedModel]  = useState("");
-  // const { selectedBrand } = useState(props)
+  const { selectedBrand, selectedModel, setSelectedModel }  = props;
 
-  const handleSelection = ( selectedModel ) => {
-    setSelectedModel(selectedModel) 
-    return selectedModel;
+  const handleSelection = ( e ) => {
+    setSelectedModel(e.target.value)
   } 
 
   useEffect(
     () => {
-      // fetch(`https://creditas-price-api.herokuapp.com/brands/${selectedBrand}/models`)
-      fetch(`https://creditas-price-api.herokuapp.com/brands/AUDI/models`)
+      fetch(`https://creditas-price-api.herokuapp.com/brands/`+ selectedBrand + `/models`)
+      // fetch(`https://creditas-price-api.herokuapp.com/brands/AUDI/models`)
       .then(response => response.json())
       .then((result) => {
         setModels(result);
@@ -24,7 +21,7 @@ const SelectModel = () => {
           setError(error);
         }
       )
-  }, [])
+  }, [selectedBrand]);
 
   if (error) {
     return <div>Erro! Tente novamente.</div>;
@@ -34,9 +31,9 @@ const SelectModel = () => {
       <div>
         <label>Qual é o modelo do seu carro?</label>
         <div className="option-div">
-          <select onChange={handleSelection}>
-            {models.map(model => (
-              <option key={model.id} value={model} selected={selectedModel === model}>
+          <select onChange={handleSelection} value={selectedModel}>
+            {models.map((model, index) => (
+              <option key={index} value={model} >
                 {model}  
               </option>
               ) 
@@ -47,5 +44,3 @@ const SelectModel = () => {
     );
   }
 };
-
-export default SelectModel;

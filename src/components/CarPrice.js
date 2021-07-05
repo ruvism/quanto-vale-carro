@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from "react";
 
-const CarPrice = () => {
+export const CarPrice = props => {
   const [error, setError] = useState(null);
   const [car, setCar] = useState([]);
+  const { selectedBrand, selectedModel, selectedYear, selectedVersion } = props;
   
-
   useEffect(
     () => {
-      // fetch(`https://creditas-price-api.herokuapp.com/brands/${selectedBrand}/models/${selectedModel}/year/${selectedYear}versions/${versionSelected}`)
-      fetch(`https://creditas-price-api.herokuapp.com/brands/AUDI/models/A1/years/2011/versions/1840d2e5294dd4624db066ef785f1315`)
+      fetch(`https://creditas-price-api.herokuapp.com/brands/`+ selectedBrand + `/models/` + selectedModel + `/years/` + selectedYear + `/versions/`+ selectedVersion)
+      // fetch(`https://creditas-price-api.herokuapp.com/brands/AUDI/models/A1/years/2011/versions/1840d2e5294dd4624db066ef785f1315`)
       .then(response => response.json())
       .then((result) => {
         setCar(result);
@@ -17,7 +17,7 @@ const CarPrice = () => {
           setError(error);
         }
       )
-  }, [])
+  }, [ selectedBrand, selectedModel, selectedYear, selectedVersion ]);
 
   if (error) {
     return <div>Erro! Tente novamente.</div>;
@@ -31,4 +31,3 @@ const CarPrice = () => {
     );
   }
 };
-export default CarPrice;

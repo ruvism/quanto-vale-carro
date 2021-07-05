@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from "react";
 
-const SelectBrand = ( ) => {
+export const SelectBrand = props => {
   const [error, setError] = useState(null);
   const [brands, setBrands] = useState([]);
-  const [selectedBrand, setSelectedBrand]  = useState("");
+  const { selectedBrand, setSelectedBrand }  = props;
   
-  const handleSelection = ( selectedBrand ) => {
-    setSelectedBrand(selectedBrand) 
-    return selectedBrand;
+  const handleSelection = e => {
+    setSelectedBrand(e.target.value); 
   }
 
   useEffect(
@@ -31,9 +30,9 @@ const SelectBrand = ( ) => {
       <div>
         <label>Qual é a marca do seu carro?</label>
         <div className="option-div">
-          <select  onChange={handleSelection}>
-            {brands.map(brand => (
-              <option key={brand.id} value={brand} selected={selectedBrand === brand}>
+          <select  onChange={handleSelection} value={selectedBrand}>
+            {brands.map((brand, index) => (
+              <option key={index} value={brand}>
                 {brand}  
               </option>
               ) 
@@ -44,5 +43,3 @@ const SelectBrand = ( ) => {
     );
   }
 };
-
-export default SelectBrand;

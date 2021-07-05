@@ -1,21 +1,18 @@
 import React, { useState, useEffect } from "react";
-// import {selectedBrand, selectedModel} from '../SelectedOptions';
 
-const SelectYear = () => {
+export const SelectYear = props => {
   const [error, setError] = useState(null);
   const [years, setYears] = useState([]);
-  const [selectedYear, setSelectedYear]  = useState("");
-  // const {selectedBrand, selectedModel} = useState(props);
+  const { selectedBrand, selectedModel, selectedYear, setSelectedYear } = props;
 
-  const handleSelection = ( selectedYear ) => {
-    setSelectedYear(selectedYear) 
-    return selectedYear;
+  const handleSelection = ( e ) => {
+    setSelectedYear(e.target.value);
   } 
 
   useEffect(
     () => {
-      // fetch(`https://creditas-price-api.herokuapp.com/brands/${selectedBrand}/models/${selectedModel}/year`)
-      fetch(`https://creditas-price-api.herokuapp.com/brands/AUDI/models/A7/years`)
+      fetch(`https://creditas-price-api.herokuapp.com/brands/`+ selectedBrand + `/models/` + selectedModel + `/years`)
+      // fetch(`https://creditas-price-api.herokuapp.com/brands/AUDI/models/A7/years`)
       .then(response => response.json())
       .then((result) => {
         setYears(result);
@@ -24,7 +21,7 @@ const SelectYear = () => {
           setError(error);
         }
       )
-  }, [])
+  }, [selectedBrand,  selectedModel ]);
 
   if (error) {
     return <div>Erro! Tente novamente.</div>;
@@ -34,9 +31,9 @@ const SelectYear = () => {
       <div>
           <label>Qual é o ano do seu carro?</label>
           <div className="option-div">
-            <select onChange={handleSelection}>
-              {years.map(year => (
-                <option key={year.id} value={year} selected={selectedYear === year}>
+            <select onChange={handleSelection} value={selectedYear}>
+              {years.map((year, index) => (
+                <option key={index} value={year}>
                   {year}  
                 </option>
                 ) 
@@ -47,4 +44,3 @@ const SelectYear = () => {
     );
   }
 };
-export default SelectYear;
