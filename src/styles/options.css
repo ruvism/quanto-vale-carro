@@ -24,6 +24,9 @@
     }
     .selected-options{
         width: 50%;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
     }
     .car-price{
         height: 100%;
@@ -31,8 +34,11 @@
         display: flex;
         justify-content: center;
         flex-direction: column;
+        align-items: center;
     }
 }
+
+/* Iputs */
 .option-div{
     display:flex;
     flex-direction: row;

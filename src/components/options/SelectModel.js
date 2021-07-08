@@ -12,7 +12,6 @@ export const SelectModel = props => {
     () => {
       if (selectedBrand) {
       fetch(`https://creditas-price-api.herokuapp.com/brands/`+selectedBrand+`/models`)
-        // fetch(`https://creditas-price-api.herokuapp.com/brands/AUDI/models`)
         .then(response => response.json())
         .then((result) => {
           setModels(result);

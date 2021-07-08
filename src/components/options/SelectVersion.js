@@ -13,7 +13,6 @@ export const SelectVersion = props => {
     () => {
       if (selectedBrand && selectedModel && selectedYear) {
       fetch(`https://creditas-price-api.herokuapp.com/brands/`+ selectedBrand + `/models/`+ selectedModel + `/years/`+ selectedYear + `/versions`)
-      // fetch(`https://creditas-price-api.herokuapp.com/brands/AUDI/models/A1/years/2011/versions`)
       .then(response => response.json())
       .then((result) => {
         setVersion(result);
