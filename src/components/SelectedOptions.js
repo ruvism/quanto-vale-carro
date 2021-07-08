@@ -11,14 +11,14 @@ export default function SelectedOptions () {
   const [selectedBrand, setSelectedBrand]  = useState("");
   const [selectedModel, setSelectedModel]  = useState("");
   const [selectedYear, setSelectedYear]  = useState("");
-  const [selectedVersion]  = "versionId";
+  const { selectedVersion } = "versionId";
 
   return (
     <div className="selected-options">
       < SelectBrand selectedBrand={selectedBrand} setSelectedBrand={setSelectedBrand} />
-      < SelectModel {...{selectedBrand, selectedModel, setSelectedModel}} />
-      < SelectYear {...{selectedBrand, selectedModel, selectedYear, setSelectedYear}} />
-      < SelectVersion {...{selectedBrand, selectedModel, selectedYear, selectedVersion}} />
+      < SelectModel  selectedBrand={selectedBrand} selectedModel={selectedModel} setSelectedModel={setSelectedModel}/>
+      < SelectYear selectedBrand={selectedBrand} selectedModel={selectedModel} selectedYear={selectedYear} setSelectedYear={setSelectedYear} />
+      < SelectVersion selectedBrand={selectedBrand} selectedModel={selectedModel} selectedYear={selectedYear} selectedVersion={selectedVersion}  />
       <CarPrice />
     </div>
   );
