@@ -3,7 +3,7 @@ import '../styles/navbar.css';
 function Navbar() {
   return (
     <div className="Navbar">
-        <h2>Creditas + Volanty</h2>
+        <h2>Geleia Carros</h2>
     </div>
   );
 }
